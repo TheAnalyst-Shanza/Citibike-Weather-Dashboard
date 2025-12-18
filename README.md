@@ -58,3 +58,15 @@ This repository is structured so that data processing is done once and reused ac
 ---
 
 ## Repository Structure
+Citibike-Weather-Dashboard/
+│
+├── Notebooks/
+│ ├── Citibike-Weather-Analysis.ipynb
+│ └── Seaborn_Station_Seasonality_Box_Facet.ipynb
+│
+├── Data/
+│ ├── Raw/ # ignored in Git
+│ └── Processed/ # ignored in Git
+│
+├── README.md
+└── .gitignore
