@@ -207,3 +207,20 @@ marimo/_lsp/
 __marimo__/
 Data/Processed/*.csv
 Data/Processed/*.parquet
+# Jupyter / Python
+.ipynb_checkpoints/
+.virtual_documents/
+__pycache__/
+
+# Data outputs
+Data/Raw/
+Data/Processed/*.csv
+Data/Processed/*.json
+*.csv
+*.json
+*.txt
+
+# Environment
+anaconda_projects/
+.env
+
