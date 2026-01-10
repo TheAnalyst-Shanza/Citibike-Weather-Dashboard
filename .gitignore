@@ -223,4 +223,15 @@ Data/Processed/*.json
 # Environment
 anaconda_projects/
 .env
+.virtual_documents/
+anaconda_projects/
+.ipynb_checkpoints/
+__pycache__/
+
+Data/Raw/
+Data/Processed/*.csv
+Data/Processed/*.json
+*.csv
+*.json
+*.txt
 
