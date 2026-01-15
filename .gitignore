@@ -234,4 +234,7 @@ Data/Processed/*.json
 *.csv
 *.json
 *.txt
-
+Data/Processed/
+*.csv
+*.parquet
+*.pkl
