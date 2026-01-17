@@ -238,3 +238,20 @@ Data/Processed/
 *.csv
 *.parquet
 *.pkl
+# Environments
+venv/
+.venv/
+__pycache__/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Large data files
+*.csv
+*.parquet
+*.pkl
+*.zip
+
+# Data folders (optional; keep if you don’t want any data in repo)
+Data/
+data/
