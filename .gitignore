@@ -255,3 +255,4 @@ __pycache__/
 # Data folders (optional; keep if you don’t want any data in repo)
 Data/
 data/
+maps/kepler_map.html
