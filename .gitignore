@@ -257,5 +257,29 @@ Data/
 data/
 maps/kepler_map.html
 Notebooks/maps/
+<<<<<<< HEAD
 maps/
 app.py
+=======
+Dashboard-1.py
+Dashboard-2.py
+Dashboard-2_updated.py
+>>>>>>> 617764d (Ignore draft dashboard files)
+# Draft dashboards (do not submit)
+Dashboard-1.py
+Dashboard-2.py
+Dashboard-2_updated.py
+app_Part_2.py
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Data (avoid large files)
+Data/Raw/
+Data/Processed/*.csv
+Data/Processed/*.parquet
+
