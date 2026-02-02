@@ -7,6 +7,9 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import streamlit.components.v1 as components
 
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent
+
 # ----------------------------
 # Page config
 # ----------------------------
@@ -65,7 +68,7 @@ if page == "Intro":
     )
 
     # Intro image
-    intro_img_path = os.path.join(BASE_DIR, "bike_pic.jpg")
+    intro_img_path = BASE_DIR / "bike_pic.jpg"
     if os.path.exists(intro_img_path):
         st.image(intro_img_path, caption="Citi Bike usage across New York City", width=900)
 
