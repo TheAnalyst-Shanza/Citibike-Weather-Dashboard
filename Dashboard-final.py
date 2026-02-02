@@ -15,15 +15,11 @@ st.title("Citi Bike Strategy Dashboard")
 st.write("Interactive dashboard exploring station demand, weather impact, and trip patterns in NYC (2022).")
 
 # ----------------------------
-# Paths (relative to this .py file)
+# Paths (repo-relative, Cloud-safe)
 # ----------------------------
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(BASE_DIR, "Data", "Processed")
-MAP_DIR = os.path.join(BASE_DIR, "maps")
-
-TRIPS_PATH = os.path.join(DATA_DIR, "trips_weather.csv")
-TOP20_PATH = os.path.join(DATA_DIR, "top20_station.csv")
-MAP_PATH = os.path.join(BASE_DIR, "Notebooks", "maps", "kepler_map.html")
+TRIPS_PATH = "Data/Processed/citibike_weather_daily_2022.csv"
+TOP20_PATH = "Data/Processed/top20_station.csv"
+MAP_PATH = "Notebooks/maps/kepler_top300.html"
 
 # ----------------------------
 # Load data
@@ -32,7 +28,6 @@ MAP_PATH = os.path.join(BASE_DIR, "Notebooks", "maps", "kepler_map.html")
 def load_data():
     df = pd.read_csv(TRIPS_PATH)
     top20 = pd.read_csv(TOP20_PATH, index_col=0)
-    df["date"] = pd.to_datetime(df["date"])
     return df, top20
 
 df, top20 = load_data()
