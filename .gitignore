@@ -282,4 +282,11 @@ __pycache__/
 Data/Raw/
 Data/Processed/*.csv
 Data/Processed/*.parquet
+# --- Streamlit Cloud: allow small processed datasets ---
+!data/
+!data/Processed/
+!data/Processed/citibike_weather_daily_2022.csv
+!data/Processed/daily_trips_2022.csv
+!data/Processed/top20_station.csv
+
 
