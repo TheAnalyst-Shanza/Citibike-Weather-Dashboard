@@ -132,7 +132,7 @@ elif page == "Weather component and bike usage":
             x=df_daily["date"],
             y=df_daily[trip_col],
             # Determine correct trip-count column
-possible_trip_cols = ["trip_count", "trips", "num_trips", "ride_count", "rides", "count"]
+possible_trip_cols = ["trip_count", "trips", "num_trips", "ride_count", "rides", "count"],
 trip_col = next((c for c in possible_trip_cols if c in df_daily.columns), None)
 
 if trip_col is None:
