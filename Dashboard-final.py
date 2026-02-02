@@ -130,14 +130,14 @@ elif page == "Weather component and bike usage":
     fig_line.add_trace(
         go.Scatter(
             x=df_daily["date"],
+            y=df_daily[trip_col],
+            # Determine correct trip-count column
 possible_trip_cols = ["trip_count", "trips", "num_trips", "ride_count", "rides", "count"]
 trip_col = next((c for c in possible_trip_cols if c in df_daily.columns), None)
 
 if trip_col is None:
     st.error(f"No trip count column found. Available columns: {list(df_daily.columns)}")
     st.stop()
-
-y=df_daily[trip_col],
 
             name="Daily Trips",
             line=dict(color="#1f77b4", width=3)
