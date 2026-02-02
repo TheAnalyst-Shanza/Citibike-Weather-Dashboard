@@ -35,6 +35,10 @@ def load_data():
 
 df, top20 = load_data()
 
+st.write("df_daily columns:", list(df_daily.columns))
+st.write(df_daily.head())
+st.stop()
+
 # ----------------------------
 # Sidebar navigation
 # ----------------------------
