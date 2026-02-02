@@ -119,37 +119,48 @@ elif page == "Most popular stations":
 elif page == "Weather component and bike usage":
     st.subheader("Trips vs Temperature Over Time")
 
+    # Create df_daily first
     df_daily = df.sort_values("date")
 
-    df_daily = df.sort_values("date")
+    # (Temporary debug - you can remove after it works)
+    st.write("df_daily columns:", list(df_daily.columns))
+    st.write(df_daily.head())
 
-# Determine correct trip-count column (MUST be outside plot)
-possible_trip_cols = ["trip_count", "trips", "num_trips", "ride_count", "rides", "count"]
-trip_col = next((c for c in possible_trip_cols if c in df_daily.columns), None)
+    # Determine correct trip-count column
+    possible_trip_cols = ["trip_count", "trips", "num_trips", "ride_count", "rides", "count"]
+    trip_col = next((c for c in possible_trip_cols if c in df_daily.columns), None)
 
-if trip_col is None:
-    st.error(f"No trip count column found. Available columns: {list(df_daily.columns)}")
-    st.stop()
+    if trip_col is None:
+        st.error(f"No trip count column found. Available columns: {list(df_daily.columns)}")
+        st.stop()
 
+    # Build the figure (this must be OUTSIDE the 'if trip_col is None' block)
     fig_line = make_subplots(specs=[[{"secondary_y": True}]])
 
     fig_line.add_trace(
         go.Scatter(
             x=df_daily["date"],
             y=df_daily[trip_col],
-
             name="Daily Trips",
-            line=dict(color="#1f77b4", width=3)
+            line=dict(color="#1f77b4", width=3),
         ),
         secondary_y=False
     )
 
+    # Temperature column: might not be 'avgTemp' in your data
+    possible_temp_cols = ["avgTemp", "AvgTemp", "avg_temp", "tavg", "temp_avg", "temperature"]
+    temp_col = next((c for c in possible_temp_cols if c in df_daily.columns), None)
+
+    if temp_col is None:
+        st.error(f"No temperature column found. Available columns: {list(df_daily.columns)}")
+        st.stop()
+
     fig_line.add_trace(
         go.Scatter(
             x=df_daily["date"],
-            y=df_daily["avgTemp"],
-            name="Avg Temp (°C)",
-            line=dict(color="#d62728", width=3)
+            y=df_daily[temp_col],
+            name="Avg Temp",
+            line=dict(color="#d62728", width=3),
         ),
         secondary_y=True
     )
@@ -162,7 +173,7 @@ if trip_col is None:
     )
 
     fig_line.update_yaxes(title_text="Trips", secondary_y=False)
-    fig_line.update_yaxes(title_text="Avg Temp (°C)", secondary_y=True)
+    fig_line.update_yaxes(title_text="Avg Temp", secondary_y=True)
 
     st.plotly_chart(fig_line, use_container_width=True)
 
