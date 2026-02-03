@@ -235,7 +235,7 @@ elif page == "Popular Stations":
 elif page == "Top 300 Routes Map":
     st.header("Kepler.gl Map: Top 300 Routes (by trip count)")
 
-    map_path = "maps/kepler_top300.html"
+    map_path = "Notebooks/MAPPS/kepler_top300.html"
     if os.path.exists(map_path):
         with open(map_path, "r", encoding="utf-8") as f:
             map_html = f.read()
