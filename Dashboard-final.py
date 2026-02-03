@@ -7,6 +7,9 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import streamlit.components.v1 as components
 
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent
+
 # ----------------------------
 # Page config
 # ----------------------------
@@ -15,15 +18,11 @@ st.title("Citi Bike Strategy Dashboard")
 st.write("Interactive dashboard exploring station demand, weather impact, and trip patterns in NYC (2022).")
 
 # ----------------------------
-# Paths (relative to this .py file)
+# Paths (repo-relative, Cloud-safe)
 # ----------------------------
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(BASE_DIR, "Data", "Processed")
-MAP_DIR = os.path.join(BASE_DIR, "maps")
-
-TRIPS_PATH = os.path.join(DATA_DIR, "trips_weather.csv")
-TOP20_PATH = os.path.join(DATA_DIR, "top20_station.csv")
-MAP_PATH = os.path.join(BASE_DIR, "Notebooks", "maps", "kepler_map.html")
+TRIPS_PATH = "Data/Processed/trips_weather.csv"
+TOP20_PATH = "Data/Processed/top20_station.csv"
+MAP_PATH = "Notebooks/MAPPS/kepler_top300.html"
 
 # ----------------------------
 # Load data
@@ -32,7 +31,6 @@ MAP_PATH = os.path.join(BASE_DIR, "Notebooks", "maps", "kepler_map.html")
 def load_data():
     df = pd.read_csv(TRIPS_PATH)
     top20 = pd.read_csv(TOP20_PATH, index_col=0)
-    df["date"] = pd.to_datetime(df["date"])
     return df, top20
 
 df, top20 = load_data()
@@ -70,7 +68,7 @@ if page == "Intro":
     )
 
     # Intro image
-    intro_img_path = os.path.join(BASE_DIR, "bike_pic.jpg")
+    intro_img_path = BASE_DIR / "bike_pic.jpg"
     if os.path.exists(intro_img_path):
         st.image(intro_img_path, caption="Citi Bike usage across New York City", width=900)
 
@@ -121,16 +119,20 @@ elif page == "Most popular stations":
 elif page == "Weather component and bike usage":
     st.subheader("Trips vs Temperature Over Time")
 
-    df_daily = df.sort_values("date")
+    df_daily = df.sort_values("date").copy()
+    df_daily["date"] = pd.to_datetime(df_daily["date"])
+
+    trip_col = "daily_trips"
+    temp_col = "temp_avg_c"
 
     fig_line = make_subplots(specs=[[{"secondary_y": True}]])
 
     fig_line.add_trace(
         go.Scatter(
             x=df_daily["date"],
-            y=df_daily["trip_count"],
+            y=df_daily[trip_col],
             name="Daily Trips",
-            line=dict(color="#1f77b4", width=3)
+            line=dict(color="#1f77b4", width=3),
         ),
         secondary_y=False
     )
@@ -138,9 +140,9 @@ elif page == "Weather component and bike usage":
     fig_line.add_trace(
         go.Scatter(
             x=df_daily["date"],
-            y=df_daily["avgTemp"],
+            y=df_daily[temp_col],
             name="Avg Temp (°C)",
-            line=dict(color="#d62728", width=3)
+            line=dict(color="#d62728", width=3),
         ),
         secondary_y=True
     )
@@ -164,7 +166,7 @@ elif page == "Interactive map":
     st.subheader("Kepler.gl Map: Trip Patterns in NYC")
 
     # If your kepler map is inside Notebooks/maps:
-    MAP_PATH = os.path.join(BASE_DIR, "Notebooks", "maps", "kepler_top300.html")
+    MAP_PATH = os.path.join(BASE_DIR, "Notebooks", "MAPPS", "kepler_top300.html")
 
     try:
         with open(MAP_PATH, "r", encoding="utf-8") as f:
