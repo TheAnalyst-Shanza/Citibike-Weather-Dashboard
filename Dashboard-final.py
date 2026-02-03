@@ -119,7 +119,7 @@ elif page == "Most popular stations":
 elif page == "Weather component and bike usage":
     st.subheader("Trips vs Temperature Over Time")
 
-df_daily = df.sort_values("date").copy()
+    df_daily = df.sort_values("date").copy()
     df_daily["date"] = pd.to_datetime(df_daily["date"])
 
     trip_col = "daily_trips"
