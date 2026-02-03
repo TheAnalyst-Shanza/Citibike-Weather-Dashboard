@@ -122,13 +122,13 @@ elif page == "Weather component and bike usage":
     # Create df_daily first
     df_daily = df.sort_values("date")
 
-    # (Temporary debug - you can remove after it works)
-    st.write("df_daily columns:", list(df_daily.columns))
-    st.write(df_daily.head())
+    # Create df_daily first
+df_daily = df.sort_values("date")
+df_daily["date"] = pd.to_datetime(df_daily["date"])
 
-    # Determine correct trip-count column
-    possible_trip_cols = ["trip_count", "trips", "num_trips", "ride_count", "rides", "count"]
-    trip_col = next((c for c in possible_trip_cols if c in df_daily.columns), None)
+# Determine correct trip-count column
+possible_trip_cols = ["daily_trips", "trip_count", "trips", "num_trips", "ride_count", "rides", "count"]
+trip_col = next((c for c in possible_trip_cols if c in df_daily.columns), None)
 
     if trip_col is None:
         st.error(f"No trip count column found. Available columns: {list(df_daily.columns)}")
@@ -147,9 +147,9 @@ elif page == "Weather component and bike usage":
         secondary_y=False
     )
 
-    # Temperature column: might not be 'avgTemp' in your data
-    possible_temp_cols = ["avgTemp", "AvgTemp", "avg_temp", "tavg", "temp_avg", "temperature"]
-    temp_col = next((c for c in possible_temp_cols if c in df_daily.columns), None)
+    # Temperature column
+possible_temp_cols = ["temp_avg_c", "avgTemp", "AvgTemp", "avg_temp", "tavg", "temp_avg", "temperature"]
+temp_col = next((c for c in possible_temp_cols if c in df_daily.columns), None)
 
     if temp_col is None:
         st.error(f"No temperature column found. Available columns: {list(df_daily.columns)}")
