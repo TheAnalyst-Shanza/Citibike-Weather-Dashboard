@@ -119,22 +119,12 @@ elif page == "Most popular stations":
 elif page == "Weather component and bike usage":
     st.subheader("Trips vs Temperature Over Time")
 
-    # Create df_daily first
-    df_daily = df.sort_values("date")
+    df_daily = df.sort_values("date").copy()
+    df_daily["date"] = pd.to_datetime(df_daily["date"])
 
-    # Create df_daily first
-df_daily = df.sort_values("date")
-df_daily["date"] = pd.to_datetime(df_daily["date"])
+    trip_col = "daily_trips"
+    temp_col = "temp_avg_c"
 
-# Determine correct trip-count column
-possible_trip_cols = ["daily_trips", "trip_count", "trips", "num_trips", "ride_count", "rides", "count"]
-trip_col = next((c for c in possible_trip_cols if c in df_daily.columns), None)
-
-    if trip_col is None:
-        st.error(f"No trip count column found. Available columns: {list(df_daily.columns)}")
-        st.stop()
-
-    # Build the figure (this must be OUTSIDE the 'if trip_col is None' block)
     fig_line = make_subplots(specs=[[{"secondary_y": True}]])
 
     fig_line.add_trace(
@@ -147,19 +137,11 @@ trip_col = next((c for c in possible_trip_cols if c in df_daily.columns), None)
         secondary_y=False
     )
 
-    # Temperature column
-possible_temp_cols = ["temp_avg_c", "avgTemp", "AvgTemp", "avg_temp", "tavg", "temp_avg", "temperature"]
-temp_col = next((c for c in possible_temp_cols if c in df_daily.columns), None)
-
-    if temp_col is None:
-        st.error(f"No temperature column found. Available columns: {list(df_daily.columns)}")
-        st.stop()
-
     fig_line.add_trace(
         go.Scatter(
             x=df_daily["date"],
             y=df_daily[temp_col],
-            name="Avg Temp",
+            name="Avg Temp (°C)",
             line=dict(color="#d62728", width=3),
         ),
         secondary_y=True
@@ -173,7 +155,7 @@ temp_col = next((c for c in possible_temp_cols if c in df_daily.columns), None)
     )
 
     fig_line.update_yaxes(title_text="Trips", secondary_y=False)
-    fig_line.update_yaxes(title_text="Avg Temp", secondary_y=True)
+    fig_line.update_yaxes(title_text="Avg Temp (°C)", secondary_y=True)
 
     st.plotly_chart(fig_line, use_container_width=True)
 
