@@ -136,9 +136,6 @@ fig_line.add_trace(
     secondary_y=True
 )
 
-    df_daily = df.sort_values("date").copy()
-    df_daily["date"] = pd.to_datetime(df_daily["date"])
-
     trip_col = "daily_trips"
     temp_col = "temp_avg_c"
 
