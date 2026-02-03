@@ -119,22 +119,8 @@ elif page == "Most popular stations":
 elif page == "Weather component and bike usage":
     st.subheader("Trips vs Temperature Over Time")
 
-    fill_temp = st.checkbox("Fill missing temperature values (interpolate)", value=False)
-
-plot_df = df_daily.copy()
-if fill_temp:
-    plot_df[temp_col] = plot_df[temp_col].interpolate(limit_direction="both")
-    st.info("Temperature line is interpolated where data was missing.")
-
-fig_line.add_trace(
-    go.Scatter(
-        x=plot_df["date"],
-        y=plot_df[temp_col],
-        name="Avg Temp (°C)",
-        mode="lines",
-    ),
-    secondary_y=True
-)
+df_daily = df.sort_values("date").copy()
+    df_daily["date"] = pd.to_datetime(df_daily["date"])
 
     trip_col = "daily_trips"
     temp_col = "temp_avg_c"
