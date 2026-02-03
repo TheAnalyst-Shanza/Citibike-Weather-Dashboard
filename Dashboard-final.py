@@ -166,7 +166,7 @@ elif page == "Interactive map":
     st.subheader("Kepler.gl Map: Trip Patterns in NYC")
 
     # If your kepler map is inside Notebooks/maps:
-    MAP_PATH = os.path.join(BASE_DIR, "Notebooks", "maps", "kepler_top300.html")
+    MAP_PATH = os.path.join(BASE_DIR, "Notebooks", "MAPPS", "kepler_top300.html")
 
     try:
         with open(MAP_PATH, "r", encoding="utf-8") as f:
