@@ -173,12 +173,21 @@ elif page == "Most popular stations":
     st.subheader("Top 20 Most Popular Start Stations")
 
     st.markdown(
-        """
-        This bar chart shows the **20 most frequently used start stations**.
-        These stations represent the highest-demand areas and are key targets for
-        bike redistribution to reduce availability complaints.
-        """
-    )
+    """
+    This bar chart highlights the **20 most frequently used Citi Bike start stations** across New York City.
+
+    These stations consistently generate the highest number of trips, indicating **concentrated rider demand**
+    in specific locations such as business districts, transit hubs, and popular activity centers.
+
+    **Why this matters:**
+    - High-usage stations are more likely to experience **bike shortages during peak hours**
+    - They require **frequent rebalancing and capacity planning** to maintain service reliability
+    - Persistent demand patterns can inform **station expansion or dock size increases**
+
+    Understanding which stations drive the majority of trips helps optimize **bike allocation,
+    operational efficiency, and rider satisfaction**.
+    """
+)
 
     required_cols = {"start_station_name", "value"}
     if not required_cols.issubset(top20.columns):
