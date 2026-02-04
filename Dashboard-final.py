@@ -26,7 +26,7 @@ st.write("Interactive dashboard exploring station demand, weather impact, and tr
 # ----------------------------
 # Paths (aligned to notebook)
 # ----------------------------
-TRIPS_PATH = "Data/Processed/citibike_weather_daily_2022.csv"
+TRIPS_PATH = "Data/Processed/citibike_weather_2022.csv"
 TOP20_PATH = "Data/Processed/top20_station.csv"
 MAP_PATH = "Notebooks/MAPPS/kepler_top300.html"
 
@@ -261,6 +261,27 @@ elif page == "Interactive map":
         html_data = f.read()
     components.html(html_data, height=800, scrolling=True)
 
+with st.expander("How to read this map", expanded=True):
+    st.markdown(
+        """
+        **What this map shows**
+        - The map visualizes **Citi Bike trip patterns in New York City** using an interactive Kepler.gl map.
+        - Each line represents a **frequently traveled route** between a start and end location.
+        - Thicker and brighter routes indicate **higher trip volumes**.
+
+        **How the data was prepared**
+        - Individual trips were **aggregated by origin–destination pairs** (start → end coordinates).
+        - A **trip count** was calculated for each unique route.
+        - To improve performance and readability, only the **top 300 most-used routes** are displayed.
+        - All data was **filtered to NYC coordinates** to ensure geographic accuracy.
+
+        **Why this matters**
+        - Highlights major travel corridors and high-demand areas.
+        - Helps identify where bike rebalancing and station capacity adjustments may be needed.
+        - Provides spatial context to complement the time-series and station-level analyses in this dashboard.
+        """
+    )
+
 # ----------------------------
 # Recommendations
 # ----------------------------
@@ -275,20 +296,21 @@ elif page == "Recommendations":
         """
         Based on the analysis presented in this dashboard, several key recommendations emerge:
 
-        1. **Target High-Demand Stations**  
-           Stations in central and lower Manhattan consistently experience heavy usage and should be
-           prioritized for bike rebalancing.
+      Strategic Insights & Implications
+1. Target High-Demand Stations
 
-        2. **Plan for Seasonal Demand**  
-           Bike usage peaks during warmer months and drops significantly in winter, suggesting that
-           operational planning should account for seasonal variability.
+Stations in central and lower Manhattan consistently record the highest trip volumes, indicating sustained commuter and tourist demand. These locations should be prioritized for proactive bike rebalancing, higher dock capacity, and faster maintenance response times. Ensuring bike availability in these areas can reduce user frustration, increase ride completion rates, and maximize system utilization.
 
-        3. **Address Spatial Imbalances**  
-           Some neighborhoods show persistent underutilization, presenting opportunities for
-           redistribution or targeted promotions.
+2. Plan for Seasonal Demand
 
-        4. **Use Geospatial Insights**  
-           The Kepler.gl map reveals high-traffic corridors that can inform infrastructure and
-           policy decisions.
-        """
+Citi Bike usage shows a strong seasonal pattern, with demand peaking during warmer months and declining sharply in winter. This suggests that staffing, bike inventory, and maintenance schedules should be adjusted seasonally. During peak months, expanding capacity and rebalancing frequency can meet higher demand, while winter operations can focus on cost efficiency and preventative maintenance.
+
+3. Address Spatial Imbalances
+
+Certain neighborhoods exhibit consistently lower usage, even during high-demand periods. This may indicate mismatches between station placement and user needs, limited awareness, or connectivity gaps. These areas present opportunities for targeted promotions, station relocation, or integration with other transit options to improve adoption and equity of access.
+
+4. Use Geospatial Insights
+
+The Kepler.gl map highlights high-traffic travel corridors across the city, revealing how riders move between neighborhoods. These spatial patterns can inform infrastructure investments, such as protected bike lanes, station expansion, and street design improvements. They also provide evidence to support data-driven policy decisions related to urban mobility and sustainability.
     )
+"""
