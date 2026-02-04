@@ -137,7 +137,7 @@ page = st.sidebar.selectbox(
 # ----------------------------
 # Intro
 # ----------------------------
-elif page == "Intro":
+if page == "Intro":
     st.subheader("Purpose of the Dashboard")
 
     st.markdown(
@@ -285,7 +285,7 @@ with st.expander("How to read this map", expanded=True):
 # ----------------------------
 # Recommendations
 # ----------------------------
-elif page == "Recommendations":
+if page == "Recommendations":
     st.subheader("Recommendations")
 
     rec_img_path = BASE_DIR / "business_pic.jpg"
