@@ -302,12 +302,12 @@ elif page == "Recommendations":
     if rec_img_path.exists():
         col1, col2, col3 = st.columns([1, 2, 1])
 
-with col2:
-   st.image( 
-       str(rec_img_path), 
-       caption="Strategic recommendations for Citi Bike operations", 
-       use_container_width=True, 
-   )
+        with col2:
+            st.image(
+                str(rec_img_path),
+                caption="Strategic recommendations for Citi Bike operations",
+                use_container_width=True,
+            )
 
     st.markdown(
         """
@@ -328,5 +328,3 @@ with col2:
         The Kepler.gl map highlights high-traffic travel corridors across the city, revealing how riders move between neighborhoods. These spatial patterns can inform infrastructure investments, such as protected bike lanes, station expansion, and street design improvements. They also provide evidence to support data-driven policy decisions related to urban mobility and sustainability.
         """
     )
-
-
