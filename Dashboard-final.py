@@ -248,20 +248,18 @@ elif page == "Interactive map":
     st.markdown(
         """
         **What this map shows**
-        - The map visualizes **Citi Bike trip patterns in New York City** using an interactive Kepler.gl map.
-        - Each line represents a **frequently traveled route** between a start and end location.
-        - Thicker and brighter routes indicate **higher trip volumes**.
+        - The map visualizes Citi Bike trip patterns in New York City.
+        - Each line represents a frequently traveled route.
+        - Thicker routes indicate higher trip volumes.
 
         **How the data was prepared**
-        - Individual trips were **aggregated by origin–destination pairs** (start → end coordinates).
-        - A **trip count** was calculated for each unique route.
-        - To improve performance and readability, only the **top 300 most-used routes** are displayed.
-        - All data was **filtered to NYC coordinates** to ensure geographic accuracy.
+        - Trips were aggregated by origin–destination pairs.
+        - A trip count was calculated for each route.
+        - Only the top 300 routes are shown to reduce clutter.
 
         **Why this matters**
-        - Highlights major travel corridors and high-demand areas.
-        - Helps identify where bike rebalancing and station capacity adjustments may be needed.
-        - Provides spatial context to complement the time-series and station-level analyses in this dashboard.
+        - Highlights major travel corridors.
+        - Supports rebalancing and infrastructure planning.
         """
     )
 
