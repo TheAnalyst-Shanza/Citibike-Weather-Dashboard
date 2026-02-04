@@ -206,11 +206,6 @@ elif page == "Weather component and bike usage":
 
     daily = build_daily(df)
 
-    required_cols = {"date", "trips", "avg_temp"}
-if not required_cols.issubset(daily.columns):
-    st.error(f"Missing required columns. Found: {list(daily.columns)}")
-    st.stop()
-
     fig_line = make_subplots(specs=[[{"secondary_y": True}]])
 
     fig_line.add_trace(
