@@ -306,7 +306,7 @@ with col2:
    st.image(
     str(rec_img_path),
     caption="Strategic recommendations for Citi Bike operations",
-    width=450
+    width=400
 )
 
     st.markdown(
