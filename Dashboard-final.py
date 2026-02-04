@@ -245,23 +245,23 @@ elif page == "Interactive map":
     st.subheader("Kepler.gl Map: Trip Patterns in NYC")
 
     with st.expander("How to read this map", expanded=True):
-    st.markdown(
-        """
-        **What this map shows**
-        - The map visualizes Citi Bike trip patterns in New York City.
-        - Each line represents a frequently traveled route.
-        - Thicker routes indicate higher trip volumes.
+        st.markdown(
+            """
+            **What this map shows**
+            - The map visualizes Citi Bike trip patterns in New York City.
+            - Each line represents a frequently traveled route.
+            - Thicker routes indicate higher trip volumes.
 
-        **How the data was prepared**
-        - Trips were aggregated by origin–destination pairs.
-        - A trip count was calculated for each route.
-        - Only the top 300 routes are shown to reduce clutter.
+            **How the data was prepared**
+            - Trips were aggregated by origin–destination pairs.
+            - A trip count was calculated for each route.
+            - Only the top 300 routes are shown to reduce clutter.
 
-        **Why this matters**
-        - Highlights major travel corridors.
-        - Supports rebalancing and infrastructure planning.
-        """
-    )
+            **Why this matters**
+            - Highlights major travel corridors.
+            - Supports rebalancing and infrastructure planning.
+            """
+        )
 
     # Prefer the notebook-aligned path, but allow a fallback if you move the file later.
     candidate_paths = [
@@ -278,6 +278,7 @@ elif page == "Interactive map":
 
     with open(map_found, "r", encoding="utf-8") as f:
         html_data = f.read()
+
     components.html(html_data, height=800, scrolling=True)
 
 # ----------------------------
