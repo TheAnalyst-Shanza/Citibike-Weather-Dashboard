@@ -137,7 +137,7 @@ page = st.sidebar.selectbox(
 # ----------------------------
 # Intro
 # ----------------------------
-if page == "Intro":
+elif page == "Intro":
     st.subheader("Purpose of the Dashboard")
 
     st.markdown(
