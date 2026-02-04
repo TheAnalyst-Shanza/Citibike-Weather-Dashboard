@@ -244,24 +244,7 @@ elif page == "Weather component and bike usage":
 elif page == "Interactive map":
     st.subheader("Kepler.gl Map: Trip Patterns in NYC")
 
-    # Prefer the notebook-aligned path, but allow a fallback if you move the file later.
-    candidate_paths = [
-        MAP_PATH,
-        "maps/kepler_top300.html",
-        str(BASE_DIR / "Notebooks" / "MAPPS" / "kepler_top300.html"),
-        str(BASE_DIR / "maps" / "kepler_top300.html"),
-    ]
-    map_found = next((p for p in candidate_paths if os.path.exists(p)), None)
-
-    if map_found is None:
-        st.error(f"Map file not found. Tried: {candidate_paths}")
-        st.stop()
-
-    with open(map_found, "r", encoding="utf-8") as f:
-        html_data = f.read()
-    components.html(html_data, height=800, scrolling=True)
-
-with st.expander("How to read this map", expanded=True):
+    with st.expander("How to read this map", expanded=True):
     st.markdown(
         """
         **What this map shows**
@@ -281,6 +264,23 @@ with st.expander("How to read this map", expanded=True):
         - Provides spatial context to complement the time-series and station-level analyses in this dashboard.
         """
     )
+
+    # Prefer the notebook-aligned path, but allow a fallback if you move the file later.
+    candidate_paths = [
+        MAP_PATH,
+        "maps/kepler_top300.html",
+        str(BASE_DIR / "Notebooks" / "MAPPS" / "kepler_top300.html"),
+        str(BASE_DIR / "maps" / "kepler_top300.html"),
+    ]
+    map_found = next((p for p in candidate_paths if os.path.exists(p)), None)
+
+    if map_found is None:
+        st.error(f"Map file not found. Tried: {candidate_paths}")
+        st.stop()
+
+    with open(map_found, "r", encoding="utf-8") as f:
+        html_data = f.read()
+    components.html(html_data, height=800, scrolling=True)
 
 # ----------------------------
 # Recommendations
