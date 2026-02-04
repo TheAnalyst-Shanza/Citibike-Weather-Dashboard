@@ -300,11 +300,14 @@ elif page == "Recommendations":
 
     rec_img_path = BASE_DIR / "business_pic.jpg"
     if rec_img_path.exists():
-        st.image(
-            str(rec_img_path),
-            caption="Strategic recommendations for Citi Bike operations",
-            use_container_width=True,
-        )
+        col1, col2, col3 = st.columns([1, 2, 1])
+
+with col2:
+    st.image(
+        str(rec_img_path),
+        caption="Strategic recommendations for Citi Bike operations",
+        use_container_width=True
+    )
 
     st.markdown(
         """
