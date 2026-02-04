@@ -140,27 +140,31 @@ page = st.sidebar.selectbox(
 if page == "Intro":
     st.subheader("Purpose of the Dashboard")
 
-   st.markdown(
-    """
-    This dashboard analyzes **Citi Bike usage patterns across New York City** to understand
-    where and when bike shortages occur, and how demand varies by location, time, and weather conditions.
+    st.markdown(
+        """
+        This dashboard analyzes **Citi Bike usage patterns across New York City** to understand
+        where and when bike shortages occur, and how demand varies by location, time, and weather conditions.
 
-    The goal is to support **data-driven operational and planning decisions** by identifying
-    high-demand stations, seasonal ridership trends, and spatial imbalances in the bike-sharing network.
+        The goal is to support **data-driven operational and planning decisions** by identifying
+        high-demand stations, seasonal ridership trends, and spatial imbalances in the bike-sharing network.
 
-    **Key areas of focus include:**
-    - **Station popularity and demand concentration**, highlighting areas that require frequent rebalancing
-    - **Weather-driven ridership patterns**, showing how temperature and seasonal changes affect usage
-    - **Spatial trip flows**, revealing major travel corridors and underutilized neighborhoods
+        **Key areas of focus include:**
+        - **Station popularity and demand concentration**, highlighting areas that require frequent rebalancing
+        - **Weather-driven ridership patterns**, showing how temperature and seasonal changes affect usage
+        - **Spatial trip flows**, revealing major travel corridors and underutilized neighborhoods
 
-    Together, these insights help improve **bike availability, system efficiency, and rider experience**
-    while informing long-term infrastructure and policy decisions.
-    """
-)
+        Together, these insights help improve **bike availability, system efficiency, and rider experience**
+        while informing long-term infrastructure and policy decisions.
+        """
+    )
 
     intro_img_path = BASE_DIR / "bike_pic.jpg"
     if intro_img_path.exists():
-        st.image(str(intro_img_path), caption="Citi Bike usage across New York City", use_container_width=True)
+        st.image(
+            str(intro_img_path),
+            caption="Citi Bike usage across New York City",
+            use_container_width=True
+        )
 
 # ----------------------------
 # Bar chart page
@@ -201,6 +205,11 @@ elif page == "Weather component and bike usage":
     st.subheader("Trips vs Temperature Over Time")
 
     daily = build_daily(df)
+
+    required_cols = {"date", "trips", "avg_temp"}
+if not required_cols.issubset(daily.columns):
+    st.error(f"Missing required columns. Found: {list(daily.columns)}")
+    st.stop()
 
     fig_line = make_subplots(specs=[[{"secondary_y": True}]])
 
