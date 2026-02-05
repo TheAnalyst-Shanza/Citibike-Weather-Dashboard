@@ -205,7 +205,7 @@ elif page == "Most popular stations":
         labels={"start_station_name": "Start Station", "value": "Trips"},
     )
     fig_bar.update_layout(xaxis_tickangle=-45, height=600)
-    st.plotly_chart(fig_bar, use_container_width=True)
+    st.plotly_chart(fig_bar, width=450)
 
 # ----------------------------
 # Dual axis line chart page
@@ -247,7 +247,7 @@ elif page == "Weather component and bike usage":
     fig_line.update_yaxes(title_text="Trips", secondary_y=False)
     fig_line.update_yaxes(title_text="Avg Temp (°C)", secondary_y=True)
 
-    st.plotly_chart(fig_line, use_container_width=True)
+    st.plotly_chart(fig_line, width=450)
 
 # ----------------------------
 # Kepler map
