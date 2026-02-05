@@ -322,7 +322,6 @@ elif page == "Interactive map":
             """
         )
 
-    # Prefer the notebook-aligned path, but allow a fallback if you move the file later.
     candidate_paths = [
         MAP_PATH,
         "maps/kepler_top300.html",
@@ -338,7 +337,9 @@ elif page == "Interactive map":
     with open(map_found, "r", encoding="utf-8") as f:
         html_data = f.read()
 
-components.html(html_data, height=800, scrolling=True)
+    # ✅ this must be indented
+    components.html(html_data, height=800, scrolling=True)
+
 
 # ----------------------------
 # Recommendations
