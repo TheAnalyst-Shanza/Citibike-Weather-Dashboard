@@ -250,6 +250,16 @@ elif page == "Weather component and bike usage":
     # -------------------------
     daily = build_daily(filtered_df)
 
+    st.markdown("""
+### Weather Impact on Citi Bike Ridership
+
+This visualization examines the relationship between daily Citi Bike trip volume and average daily temperature in New York City. The chart uses a dual-axis format to compare ridership trends with temperature patterns across the year.
+
+The analysis highlights a strong seasonal relationship, where bike usage generally increases during warmer months and declines during colder periods. These patterns suggest that weather conditions play a significant role in influencing rider behavior.
+
+This insight supports operational planning, demand forecasting, and strategic decision-making by helping stakeholders anticipate seasonal fluctuations in bike usage.
+""")
+
     # -------------------------
     # Plot Chart
     # -------------------------
