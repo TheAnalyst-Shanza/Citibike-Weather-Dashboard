@@ -338,8 +338,7 @@ elif page == "Interactive map":
     with open(map_found, "r", encoding="utf-8") as f:
         html_data = f.read()
 
-# Give the map more space + remove internal scrolling
-components.html(html_data, height=850, scrolling=True)
+components.html(html_data, height=800, scrolling=True)
 
 # ----------------------------
 # Recommendations
