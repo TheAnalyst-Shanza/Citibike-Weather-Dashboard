@@ -338,7 +338,13 @@ elif page == "Interactive map":
     with open(map_found, "r", encoding="utf-8") as f:
         html_data = f.read()
 
-    components.html(html_data, height=800, scrolling=True)
+   st.markdown("### 🗺️ Trip Flow Map (Top Routes)")
+
+# Optional: short context line that looks professional
+st.caption("Thicker/brighter routes represent higher trip volume between station pairs.")
+
+# Give the map more space + remove internal scrolling
+components.html(html_data, height=900, scrolling=False)
 
 # ----------------------------
 # Recommendations
