@@ -71,4 +71,4 @@ Citibike-Weather-Dashboard/
 ├── README.md
 └── .gitignore
 
-## Citibike Dashboard Link
+## Citi bike Weather Dashboard Link
