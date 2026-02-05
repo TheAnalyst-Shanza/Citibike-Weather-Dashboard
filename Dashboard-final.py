@@ -339,7 +339,7 @@ elif page == "Interactive map":
         html_data = f.read()
 
 # Give the map more space + remove internal scrolling
-components.html(html_data, height=900, scrolling=False)
+components.html(html_data, height=850, scrolling=True)
 
 # ----------------------------
 # Recommendations
