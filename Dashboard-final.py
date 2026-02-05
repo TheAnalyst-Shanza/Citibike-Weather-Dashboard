@@ -163,7 +163,7 @@ if page == "Intro":
         st.image(
             str(intro_img_path),
             caption="Citi Bike usage across New York City",
-            use_container_width=True
+            use_column_width=True
         )
 
 # ----------------------------
