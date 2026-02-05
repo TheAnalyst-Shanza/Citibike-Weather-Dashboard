@@ -26,7 +26,7 @@ st.write("Interactive dashboard exploring station demand, weather impact, and tr
 # ----------------------------
 # Paths (aligned to notebook)
 # ----------------------------
-TRIPS_PATH = "Data/Processed/citibike_weather_daily_2022.csv"
+TRIPS_PATH = "Data/Processed/trips_weather.csv"
 TOP20_PATH = "Data/Processed/top20_station.csv"
 MAP_PATH = "Notebooks/MAPPS/kepler_top300.html"
 
