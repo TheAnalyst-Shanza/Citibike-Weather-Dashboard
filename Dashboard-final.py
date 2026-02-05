@@ -338,9 +338,6 @@ elif page == "Interactive map":
     with open(map_found, "r", encoding="utf-8") as f:
         html_data = f.read()
 
-# Optional: short context line that looks professional
-st.caption("Thicker/brighter routes represent higher trip volume between station pairs.")
-
 # Give the map more space + remove internal scrolling
 components.html(html_data, height=900, scrolling=False)
 
