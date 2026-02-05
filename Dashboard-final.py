@@ -26,7 +26,7 @@ st.write("Interactive dashboard exploring station demand, weather impact, and tr
 # ----------------------------
 # Paths (aligned to notebook)
 # ----------------------------
-TRIPS_PATH = "Data/Processed/citibike_weather_2022.csv"
+TRIPS_PATH = "Data/Processed/citibike_weather_daily_2022.csv"
 TOP20_PATH = "Data/Processed/top20_station.csv"
 MAP_PATH = "Notebooks/MAPPS/kepler_top300.html"
 
@@ -303,10 +303,10 @@ elif page == "Recommendations":
         col1, col2, col3 = st.columns([1, 2, 1])
 
         with col2:
-            st.image(
+           st.image(
                 str(rec_img_path),
                 caption="Strategic recommendations for Citi Bike operations",
-                use_container_width=True,
+                use_container_width=True
             )
 
     st.markdown(
