@@ -211,10 +211,48 @@ elif page == "Most popular stations":
 # Dual axis line chart page
 # ----------------------------
 elif page == "Weather component and bike usage":
+
     st.subheader("Trips vs Temperature Over Time")
 
-    daily = build_daily(df)
+    # -------------------------
+    # Create Season Column
+    # -------------------------
+    df["date"] = pd.to_datetime(df["date"])
+    df["month"] = df["date"].dt.month
 
+    def month_to_season(m):
+        if m in [12, 1, 2]:
+            return "Winter"
+        elif m in [3, 4, 5]:
+            return "Spring"
+        elif m in [6, 7, 8]:
+            return "Summer"
+        else:
+            return "Fall"
+
+    df["season"] = df["month"].apply(month_to_season)
+
+    # -------------------------
+    # Sidebar Season Filter
+    # -------------------------
+    season_choice = st.sidebar.selectbox(
+        "Select Season",
+        ["All", "Winter", "Spring", "Summer", "Fall"]
+    )
+
+    if season_choice != "All":
+        filtered_df = df[df["season"] == season_choice]
+    else:
+        filtered_df = df.copy()
+
+    # -------------------------
+    # Build Daily Data AFTER filtering
+    # -------------------------
+    daily = build_daily(filtered_df)
+
+    # -------------------------
+    # Plot Chart
+    # -------------------------
     fig_line = make_subplots(specs=[[{"secondary_y": True}]])
 
     fig_line.add_trace(
