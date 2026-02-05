@@ -281,6 +281,7 @@ __pycache__/
 # Data (avoid large files)
 Data/Raw/
 Data/Processed/*.csv
+!Data/Processed/trips_weather.csv
 Data/Processed/*.parquet
 # --- Streamlit Cloud: allow small processed datasets ---
 !data/
