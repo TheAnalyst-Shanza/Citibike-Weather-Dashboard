@@ -306,7 +306,7 @@ elif page == "Recommendations":
            st.image(
                 str(rec_img_path),
                 caption="Strategic recommendations for Citi Bike operations",
-                use_container_width=True,
+                use_container_width=True
             )
 
     st.markdown(
