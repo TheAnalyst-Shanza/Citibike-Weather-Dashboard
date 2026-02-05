@@ -348,28 +348,26 @@ elif page == "Recommendations":
 
     rec_img_path = BASE_DIR / "business_pic.jpg"
     if rec_img_path.exists():
-           st.image(
-                str(rec_img_path),
-                caption="Strategic recommendations for Citi Bike operations",
-                use_container_width=True
-            )
+        st.image(
+            str(rec_img_path),
+            caption="Strategic recommendations for Citi Bike operations",
+            use_container_width=True,
+        )
 
-    st.markdown(
-        """
-        Based on the analysis presented in this dashboard, several key recommendations emerge.
+    st.markdown("""
+    Based on the analysis presented in this dashboard, several key recommendations emerge.
 
-        ## Strategic Insights & Implications
+    ## Strategic Insights & Implications
 
-        ### 1. Target High-Demand Stations
-        Stations in central and lower Manhattan consistently record the highest trip volumes, indicating sustained commuter and tourist demand. These locations should be prioritized for proactive bike rebalancing, higher dock capacity, and faster maintenance response times. Ensuring bike availability in these areas can reduce user frustration, increase ride completion rates, and maximize system utilization.
+    ### 1. Target High-Demand Stations
+    Stations in central and lower Manhattan consistently record the highest trip volumes, indicating sustained commuter and tourist demand. These locations should be prioritized for proactive bike rebalancing, higher dock capacity, and faster maintenance response times. Ensuring bike availability in these areas can reduce user frustration, increase ride completion rates, and maximize system utilization.
 
-        ### 2. Plan for Seasonal Demand
-        Citi Bike usage shows a strong seasonal pattern, with demand peaking during warmer months and declining sharply in winter. This suggests that staffing, bike inventory, and maintenance schedules should be adjusted seasonally. During peak months, expanding capacity and rebalancing frequency can meet higher demand, while winter operations can focus on cost efficiency and preventative maintenance.
+    ### 2. Plan for Seasonal Demand
+    Citi Bike usage shows a strong seasonal pattern, with demand peaking during warmer months and declining sharply in winter. This suggests that staffing, bike inventory, and maintenance schedules should be adjusted seasonally. During peak months, expanding capacity and rebalancing frequency can meet higher demand, while winter operations can focus on cost efficiency and preventative maintenance.
 
-        ### 3. Address Spatial Imbalances
-        Certain neighborhoods exhibit consistently lower usage, even during high-demand periods. This may indicate mismatches between station placement and user needs, limited awareness, or connectivity gaps. These areas present opportunities for targeted promotions, station relocation, or integration with other transit options to improve adoption and equity of access.
+    ### 3. Address Spatial Imbalances
+    Certain neighborhoods exhibit consistently lower usage, even during high-demand periods. This may indicate mismatches between station placement and user needs, limited awareness, or connectivity gaps. These areas present opportunities for targeted promotions, station relocation, or integration with other transit options to improve adoption and equity of access.
 
-        ### 4. Use Geospatial Insights
-        The Kepler.gl map highlights high-traffic travel corridors across the city, revealing how riders move between neighborhoods. These spatial patterns can inform infrastructure investments, such as protected bike lanes, station expansion, and street design improvements. They also provide evidence to support data-driven policy decisions related to urban mobility and sustainability.
-        """
-    )
+    ### 4. Use Geospatial Insights
+    The Kepler.gl map highlights high-traffic travel corridors across the city, revealing how riders move between neighborhoods. These spatial patterns can inform infrastructure investments, such as protected bike lanes, station expansion, and street design improvements. They also provide evidence to support data-driven policy decisions related to urban mobility and sustainability.
+    """)
